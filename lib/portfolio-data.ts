@@ -8,15 +8,15 @@ export const personalInfo = {
   name: 'Jan Florenz R. Tenebroso',
   shortName: 'Jan Florenz',
   initials: 'JT',
-  title: 'Full Stack Developer | Game Developer',
-  location: 'Las Arenas, Mandug, Davao City',
+  title: 'Software Engineer',
+  location: 'Las Arenas, Mandug, Davao City, Davao del Sur',
   email: 'janflorenztenebroso311@gmail.com',
-  phone: '0967-290-6859',
+  phone: '+63967 290 6859',
 };
 
 // Social Links
 export const socialLinks = {
-  github: 'https://github.com/janflorenztenebroso', // Update with your actual GitHub
+  github: 'https://github.com/Furenzu25', // Update with your actual GitHub
   linkedin: '#', // Update with your actual LinkedIn
   twitter: '#', // Update with your actual Twitter/X
 };
@@ -29,7 +29,7 @@ export const summary = {
 Experienced leader of web development projects and team player across teams for the adoption of modern technologies that will aid in efficiency and innovation. Balances technical execution with a strategic mindset to produce high-impact results.`,
   paragraphs: [
     "I'm a Full Stack Developer and Process Design Engineer with an emphasis on practical application and a detail-oriented approach. Familiar with software development and engineering processes, I specialize in creating efficient, user-centered solutions.",
-    "My experience spans web development using PHP Laravel, Java applications, and machine learning with Python. I focus on optimizing workflows, system automation, and delivering solutions that align with business goals.",
+    "My experience spans web development using PHP Laravel with Filament, Java Spring Boot applications, modern frameworks like NestJS and Next.js, and machine learning with Python and TensorFlow. I focus on optimizing workflows, system automation, and delivering solutions that align with business goals.",
     "As an experienced leader in web development projects and a strong team player, I embrace modern technologies that aid in efficiency and innovation. I balance technical execution with a strategic mindset to produce high-impact results.",
   ],
 };
@@ -38,7 +38,7 @@ Experienced leader of web development projects and team player across teams for 
 export const education = {
   degree: 'Bachelor of Science in Computer Science',
   school: 'Ateneo de Davao University',
-  period: 'Sep 2019 - Sep 2023',
+  period: '2022 - 2026',
   highlights: [
     'Software Engineering',
     'Machine Learning',
@@ -56,12 +56,12 @@ export const skillCategories = [
   {
     category: 'Programming Languages',
     color: 'from-blue-500 to-cyan-500',
-    skills: ['C++', 'Java', 'PHP', 'Python', 'HTML', 'CSS', 'JavaScript'],
+    skills: ['C++', 'Java', 'PHP', 'Python', 'TypeScript', 'HTML', 'CSS'],
   },
   {
     category: 'Frameworks & Libraries',
     color: 'from-purple-500 to-pink-500',
-    skills: ['Laravel', 'MaryUI', 'Livewire', 'Tailwind CSS', 'DaisyUI', 'TensorFlow'],
+    skills: ['Laravel', 'Filament', 'Spring Boot', 'NestJS', 'Next.js', 'Tailwind CSS', 'TensorFlow'],
   },
   {
     category: 'Databases',
@@ -71,7 +71,7 @@ export const skillCategories = [
   {
     category: 'DevOps & Systems',
     color: 'from-orange-500 to-red-500',
-    skills: ['Ubuntu Linux', 'Kali Linux', 'Shell Scripting', 'SSH', 'Server Deployment', 'Git/GitHub'],
+    skills: ['Docker', 'Ubuntu Linux', 'Kali Linux', 'Git/GitHub', 'Vercel', 'Cloudflare'],
   },
   {
     category: 'Machine Learning',
@@ -87,23 +87,43 @@ export const skillCategories = [
 
 // Hero stats - realistic numbers based on CV
 export const heroStats = {
-  projectsCompleted: '10+',
-  yearsExperience: '3+',
-  technologiesUsed: '15+',
+  projectsCompleted: '6+',
+  yearsExperience: '2+',
+  technologiesUsed: '20+',
 };
 
 // Project Experience from CV (for reference - user will add projects manually)
 // This is kept for reference but the projects section will be empty for manual entry
 export const projectExperience = [
   {
-    title: 'E-Commerce Web Application',
-    tech: 'PHP Laravel, MaryUI, MySQL, Livewire',
+    title: 'Web Application Development',
+    tech: 'PHP, Laravel, MaryUI, MySQL',
     period: 'Jan 2024 - Dec 2024',
     highlights: [
-      'Full stack developer for company e-commerce application',
+      'Full stack developer for company web application',
       'Automated core business processes (inventory updates, loan tracking, financial reporting)',
       'Implemented login for admin and users with installment plan purchasing',
       'Built responsive and accessible UI with MaryUI, Tailwind CSS, and DaisyUI',
+    ],
+  },
+  {
+    title: 'Portfolio & Web Apps',
+    tech: 'NestJS, Next.js, Vercel, Cloudflare',
+    period: 'Nov 2024 - Apr 2025',
+    highlights: [
+      'Built modern web applications using Next.js and NestJS',
+      'Deployed applications using Vercel and Cloudflare',
+      'Implemented full-stack solutions with TypeScript',
+    ],
+  },
+  {
+    title: 'Image Classification Model',
+    tech: 'Python, TensorFlow, CNN',
+    period: 'Jan 2025 - Dec 2025',
+    highlights: [
+      'Developed model for classifying objects, animals, and vehicles',
+      'Used Convolutional Neural Networks and transfer learning',
+      'Trained on CIFAR10 dataset',
     ],
   },
   {
@@ -118,22 +138,21 @@ export const projectExperience = [
   },
   {
     title: 'Point of Sale System',
-    tech: 'Java, Java GUI, MySQL, PostgreSQL',
-    period: 'Jan 2023 - Dec 2023',
+    tech: 'Java Spring Boot, Java GUI, MySQL, PostgreSQL',
+    period: 'Jan 2024 - Dec 2024',
     highlights: [
       'Implemented Java GUI POS system with MySQL backend',
       'Applied sorting algorithm optimization for item retrieval',
-      'Developed PostgreSQL-based POS project',
+      'Developed PostgreSQL-based POS project using Spring Boot',
     ],
   },
   {
-    title: 'Image Classification Model',
-    tech: 'Python, TensorFlow, CNN',
-    period: 'Jan 2025 - May 2025',
+    title: 'Static Website',
+    tech: 'HTML, Pure CSS',
+    period: 'Jan 2024 - May 2024',
     highlights: [
-      'Developed model for classifying objects, animals, and vehicles',
-      'Used Convolutional Neural Networks and transfer learning',
-      'Trained on CIFAR10 dataset',
+      'Built responsive static websites with pure HTML and CSS',
+      'Focused on clean, semantic markup and modern CSS practices',
     ],
   },
 ];

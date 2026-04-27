@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'A modern portfolio showcasing creative work and professional expertise',
+  title: 'Jan Florenz Tenebroso | Software Engineer',
+  description: 'Full Stack Developer and Process Design Engineer specializing in web development, system automation, and user-centered solutions.',
   generator: 'v0.app',
   icons: {
     icon: [
