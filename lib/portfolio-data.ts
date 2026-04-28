@@ -87,6 +87,16 @@ export const heroStats = {
 
 export const projectExperience = [
   {
+    title: 'Rosel Trading Website',
+    tech: 'ReactJS, NestJS, TypeScript, Production Deployment',
+    period: '2025 - Present',
+    highlights: [
+      'Built and deployed roseltrading.trade as a full-stack business website for a family-owned company',
+      'Implemented the frontend with ReactJS and the backend APIs with NestJS',
+      'Delivered a production-ready deployment with stable hosting and live domain access',
+    ],
+  },
+  {
     title: 'Web Application Development',
     tech: 'PHP, Laravel, MaryUI, MySQL',
     period: 'Jan 2024 - Dec 2024',
