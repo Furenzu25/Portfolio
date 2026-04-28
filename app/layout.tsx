@@ -1,16 +1,31 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Archivo, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const archivo = Archivo({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Jan Florenz Tenebroso | Software Engineer',
-  description: 'Full Stack Developer and Process Design Engineer specializing in web development, system automation, and user-centered solutions.',
-  generator: 'v0.app',
+  description:
+    'Full Stack Software Engineer specializing in web development, system automation, and user-centered solutions.',
   icons: {
     icon: [
       {
@@ -36,8 +51,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`font-sans antialiased bg-background text-foreground`}>
+    <html
+      lang="en"
+      className={`dark ${archivo.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="font-sans antialiased bg-background text-foreground">
         {children}
         <Analytics />
       </body>

@@ -1,9 +1,7 @@
 /**
  * Centralized portfolio data - Single source of truth for all personal information
- * Edit this file to update your portfolio content across all components
  */
 
-// Personal Information
 export const personalInfo = {
   name: 'Jan Florenz R. Tenebroso',
   shortName: 'Jan Florenz',
@@ -14,27 +12,24 @@ export const personalInfo = {
   phone: '+63967 290 6859',
 };
 
-// Social Links
 export const socialLinks = {
-  github: 'https://github.com/Furenzu25', // Update with your actual GitHub
-  linkedin: '#', // Update with your actual LinkedIn
-  twitter: '#', // Update with your actual Twitter/X
+  github: 'https://github.com/Furenzu25',
+  linkedin: '#',
+  twitter: '#',
 };
 
-// Summary/Bio
 export const summary = {
-  short: 'Full Stack Developer and Process Design Engineer with an emphasis on practical application and a detail-oriented approach.',
-  full: `Full Stack Developer and Process Design Engineer with an emphasis on practical application and a detail-oriented approach. Familiar with software development and engineering processes. Good at optimizing workflows, system automation, and user-centered solutions in compliance with business goals.
+  short: 'Full Stack Software Engineer with an emphasis on practical application and a detail-oriented approach.',
+  full: `Full Stack Software Engineer with an emphasis on practical application and a detail-oriented approach. Familiar with software development and engineering processes. Good at optimizing workflows, system automation, and user-centered solutions in compliance with business goals.
 
 Experienced leader of web development projects and team player across teams for the adoption of modern technologies that will aid in efficiency and innovation. Balances technical execution with a strategic mindset to produce high-impact results.`,
   paragraphs: [
-    "I'm a Full Stack Developer and Process Design Engineer with an emphasis on practical application and a detail-oriented approach. Familiar with software development and engineering processes, I specialize in creating efficient, user-centered solutions.",
+    "I'm a Full Stack Software Engineer with an emphasis on practical application and a detail-oriented approach. Familiar with software development and engineering processes, I specialize in creating efficient, user-centered solutions.",
     "My experience spans web development using PHP Laravel with Filament, Java Spring Boot applications, modern frameworks like NestJS and Next.js, and machine learning with Python and TensorFlow. I focus on optimizing workflows, system automation, and delivering solutions that align with business goals.",
     "As an experienced leader in web development projects and a strong team player, I embrace modern technologies that aid in efficiency and innovation. I balance technical execution with a strategic mindset to produce high-impact results.",
   ],
 };
 
-// Education
 export const education = {
   degree: 'Bachelor of Science in Computer Science',
   school: 'Ateneo de Davao University',
@@ -51,7 +46,6 @@ export const education = {
   ],
 };
 
-// Skills organized by category
 export const skillCategories = [
   {
     category: 'Programming Languages',
@@ -66,7 +60,7 @@ export const skillCategories = [
   {
     category: 'Databases',
     color: 'from-green-500 to-emerald-500',
-    skills: ['MySQL', 'PostgreSQL', 'Database Management', 'SQL'],
+    skills: ['MySQL', 'PostgreSQL', 'Supabase', 'Database Management'],
   },
   {
     category: 'DevOps & Systems',
@@ -85,15 +79,12 @@ export const skillCategories = [
   },
 ];
 
-// Hero stats - realistic numbers based on CV
 export const heroStats = {
   projectsCompleted: '6+',
   yearsExperience: '2+',
   technologiesUsed: '20+',
 };
 
-// Project Experience from CV (for reference - user will add projects manually)
-// This is kept for reference but the projects section will be empty for manual entry
 export const projectExperience = [
   {
     title: 'Web Application Development',
@@ -157,7 +148,6 @@ export const projectExperience = [
   },
 ];
 
-// Empty projects array for user to fill manually
 export interface Project {
   id: number;
   title: string;
@@ -166,9 +156,22 @@ export interface Project {
   image: string;
   live?: string;
   github?: string;
+  featured?: boolean;
 }
 
-export const projects: Project[] = [];
+export const projects: Project[] = [
+  {
+    id: 1,
+    title: 'Rosel Trading - Arawan Loan',
+    description:
+      'A day-to-day loan management system for Arawan customers. Built for Rosel Trading to streamline their lending operations with real-time tracking, customer management, and automated financial reporting.',
+    tags: ['Next.js', 'Supabase', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    image: '',
+    live: 'https://www.roseltrading.trade',
+    featured: true,
+  },
+];
 
-// Languages
 export const languages = ['English', 'Tagalog', 'Bisaya'];
+
+export const allSkillsFlat = skillCategories.flatMap((cat) => cat.skills);
