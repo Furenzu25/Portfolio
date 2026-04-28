@@ -166,7 +166,17 @@ export const projects: Project[] = [
     description:
       'A day-to-day loan management system for Arawan customers. Built for Rosel Trading to streamline their lending operations with real-time tracking, customer management, and automated financial reporting.',
     tags: ['Next.js', 'Supabase', 'TypeScript', 'Tailwind CSS', 'Vercel'],
-    image: '',
+    image: '/Screenshot 2026-04-29 071707.png',
+    live: 'https://www.roseltrading.trade',
+    featured: true,
+  },
+  {
+    id: 2,
+    title: 'Rosel Trading - Loan Creation Flow',
+    description:
+      'Loan origination modal focused on fast daily loan setup, repayment computation, and customer signature capture for day-to-day business operations.',
+    tags: ['Next.js', 'Supabase', 'Loan Workflow', 'UX', 'Tailwind CSS'],
+    image: '/opera_SNCY8UBMa2.png',
     live: 'https://www.roseltrading.trade',
     featured: true,
   },

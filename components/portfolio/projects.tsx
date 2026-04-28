@@ -52,14 +52,28 @@ function FeaturedProjectCard({ project }: { project: Project }) {
         <div className="grid md:grid-cols-2 gap-0">
           {/* Visual side */}
           <div className="relative h-64 md:h-auto min-h-[300px] bg-gradient-to-br from-accent/20 via-purple-500/10 to-blue-500/10 overflow-hidden">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center space-y-3">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-accent/20 flex items-center justify-center border border-accent/20">
-                  <ArrowUpRight className="w-7 h-7 text-accent" />
+            {project.image ? (
+              <>
+                <img
+                  src={project.image}
+                  alt={`${project.title} screenshot`}
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+                <div className="absolute left-4 bottom-4 glass rounded-lg px-3 py-2">
+                  <p className="text-xs font-medium text-foreground/90">Live Dashboard</p>
                 </div>
-                <p className="text-sm text-muted-foreground font-medium">Live Project</p>
+              </>
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center space-y-3">
+                  <div className="w-16 h-16 mx-auto rounded-2xl bg-accent/20 flex items-center justify-center border border-accent/20">
+                    <ArrowUpRight className="w-7 h-7 text-accent" />
+                  </div>
+                  <p className="text-sm text-muted-foreground font-medium">Live Project</p>
+                </div>
               </div>
-            </div>
+            )}
             {/* Animated gradient orbs */}
             <motion.div
               animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
