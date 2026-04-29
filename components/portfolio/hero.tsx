@@ -253,7 +253,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
             >
               {[
                 { value: heroStats.projectsCompleted, label: 'Projects' },
-                { value: heroStats.yearsExperience, label: 'Years Exp.' },
+                { value: heroStats.yearsExperience, label: 'Fresh Graduate' },
                 { value: heroStats.technologiesUsed, label: 'Technologies' },
               ].map((stat) => (
                 <div key={stat.label}>

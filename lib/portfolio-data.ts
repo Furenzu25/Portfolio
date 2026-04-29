@@ -22,11 +22,11 @@ export const summary = {
   short: 'Full Stack Software Engineer with an emphasis on practical application and a detail-oriented approach.',
   full: `Full Stack Software Engineer with an emphasis on practical application and a detail-oriented approach. Familiar with software development and engineering processes. Good at optimizing workflows, system automation, and user-centered solutions in compliance with business goals.
 
-Experienced leader of web development projects and team player across teams for the adoption of modern technologies that will aid in efficiency and innovation. Balances technical execution with a strategic mindset to produce high-impact results.`,
+Collaborative contributor in web development projects and team settings, with a focus on adopting modern technologies that improve efficiency and innovation. Balances technical execution with a strategic mindset to produce high-impact results.`,
   paragraphs: [
     "I'm a Full Stack Software Engineer with an emphasis on practical application and a detail-oriented approach. Familiar with software development and engineering processes, I specialize in creating efficient, user-centered solutions.",
     "My experience spans web development using PHP Laravel with Filament, Java Spring Boot applications, modern frameworks like NestJS and Next.js, and machine learning with Python and TensorFlow. I focus on optimizing workflows, system automation, and delivering solutions that align with business goals.",
-    "As an experienced leader in web development projects and a strong team player, I embrace modern technologies that aid in efficiency and innovation. I balance technical execution with a strategic mindset to produce high-impact results.",
+    "As a collaborative contributor in web development projects and a strong team player, I embrace modern technologies that aid in efficiency and innovation. I balance technical execution with a strategic mindset to produce high-impact results.",
   ],
 };
 
@@ -81,7 +81,7 @@ export const skillCategories = [
 
 export const heroStats = {
   projectsCompleted: '6+',
-  yearsExperience: '2+',
+  yearsExperience: '0+',
   technologiesUsed: '20+',
 };
 
