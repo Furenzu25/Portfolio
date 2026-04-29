@@ -33,7 +33,9 @@ function MagneticButton({
       onMouseLeave={handleMouseLeave}
       className={`transition-transform duration-200 ${className}`}
       {...props}
-    />
+    >
+      {children}
+    </button>
   );
 }
 
