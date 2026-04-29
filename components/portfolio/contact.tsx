@@ -157,15 +157,12 @@ export default function Contact() {
 
               <MagneticButton
                 type="submit"
-                className="w-full px-6 py-3.5 min-h-11 rounded-xl bg-accent text-accent-foreground font-semibold text-sm flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.98] cursor-pointer"
+                className="w-full px-6 py-3.5 min-h-11 rounded-xl bg-accent text-white font-semibold text-sm flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.98] cursor-pointer"
               >
                 {submitted ? (
                   'Opening Email Client...'
                 ) : (
-                  <>
-                    Send Message
-                    <Send className="w-4 h-4" />
-                  </>
+                  'Send Message'
                 )}
               </MagneticButton>
             </form>
