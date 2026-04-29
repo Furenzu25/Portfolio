@@ -39,17 +39,17 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-4 left-4 right-4 z-50"
+      className="fixed top-3 sm:top-4 left-3 right-3 sm:left-4 sm:right-4 z-50"
     >
       <nav
-        className={`max-w-3xl mx-auto px-2 py-2 rounded-2xl transition-all duration-500 ${
+        className={`max-w-3xl mx-auto px-2 sm:px-2.5 py-2 rounded-2xl transition-all duration-500 ${
           scrolled ? 'glass-strong shadow-2xl shadow-black/20' : 'glass'
         }`}
       >
         <div className="flex items-center justify-between">
           <button
             onClick={() => handleNav('home')}
-            className="px-3 py-1.5 text-sm font-heading font-bold tracking-tight text-gradient cursor-pointer"
+            className="px-3 py-2 min-h-11 min-w-11 text-sm font-heading font-bold tracking-tight text-gradient cursor-pointer"
           >
             JT
           </button>
@@ -80,7 +80,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
+            className="md:hidden p-2.5 min-h-11 min-w-11 rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
@@ -106,7 +106,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: i * 0.05 }}
                     onClick={() => handleNav(item.id)}
-                    className={`block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
+                    className={`block w-full text-left px-4 py-2.5 min-h-11 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                       activeSection === item.id
                         ? 'bg-accent/15 text-foreground'
                         : 'text-muted-foreground hover:bg-white/5 hover:text-foreground'

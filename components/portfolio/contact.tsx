@@ -90,15 +90,15 @@ export default function Contact() {
           <span className="text-accent text-sm font-mono font-medium tracking-wider uppercase">
             // Contact
           </span>
-          <h2 className="text-4xl sm:text-5xl font-heading font-bold mt-3 mb-4">
+          <h2 className="text-3xl sm:text-5xl font-heading font-bold mt-3 mb-4">
             Let&apos;s Work Together
           </h2>
-          <p className="text-muted-foreground text-lg max-w-lg mx-auto">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-lg mx-auto">
             Have a project in mind? I&apos;d love to hear about it.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12">
           {/* Form - takes 3 columns */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -119,7 +119,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-shadow text-sm"
+                    className="w-full px-4 py-3 min-h-11 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-shadow text-sm"
                     placeholder="Your name"
                   />
                 </div>
@@ -134,7 +134,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-shadow text-sm"
+                    className="w-full px-4 py-3 min-h-11 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-shadow text-sm"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -157,7 +157,7 @@ export default function Contact() {
 
               <MagneticButton
                 type="submit"
-                className="w-full px-6 py-3.5 rounded-xl bg-accent text-accent-foreground font-semibold text-sm flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.98] cursor-pointer"
+                className="w-full px-6 py-3.5 min-h-11 rounded-xl bg-accent text-accent-foreground font-semibold text-sm flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.98] cursor-pointer"
               >
                 {submitted ? (
                   'Opening Email Client...'

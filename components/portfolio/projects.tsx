@@ -51,7 +51,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
       <div className="group relative glass rounded-2xl overflow-hidden cursor-pointer">
         <div className="grid md:grid-cols-2 gap-0">
           {/* Visual side */}
-          <div className="relative h-64 md:h-auto min-h-[300px] bg-gradient-to-br from-accent/20 via-purple-500/10 to-blue-500/10 overflow-hidden">
+          <div className="relative h-56 sm:h-64 md:h-auto min-h-[220px] sm:min-h-[300px] bg-gradient-to-br from-accent/20 via-purple-500/10 to-blue-500/10 overflow-hidden">
             {project.image ? (
               <>
                 <img
@@ -88,13 +88,13 @@ function FeaturedProjectCard({ project }: { project: Project }) {
           </div>
 
           {/* Content side */}
-          <div className="p-8 md:p-10 flex flex-col justify-center space-y-5">
+          <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center space-y-4 sm:space-y-5">
             <div className="inline-flex">
               <span className="px-3 py-1 rounded-full bg-accent/15 text-accent text-xs font-semibold uppercase tracking-wider">
                 Featured
               </span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-foreground">
               {project.title}
             </h3>
             <p className="text-muted-foreground leading-relaxed">{project.description}</p>
@@ -110,13 +110,13 @@ function FeaturedProjectCard({ project }: { project: Project }) {
               ))}
             </div>
 
-            <div className="flex gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
               {project.live && (
                 <a
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent text-accent-foreground text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition-transform cursor-pointer"
+                  className="inline-flex justify-center items-center gap-2 px-5 py-3 min-h-11 rounded-xl bg-accent text-accent-foreground text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition-transform cursor-pointer"
                 >
                   Visit Site
                   <ExternalLink className="w-4 h-4" />
@@ -127,7 +127,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border text-sm font-semibold hover:bg-white/5 transition-colors cursor-pointer"
+                  className="inline-flex justify-center items-center gap-2 px-5 py-3 min-h-11 rounded-xl border border-border text-sm font-semibold hover:bg-white/5 transition-colors cursor-pointer"
                 >
                   Source
                   <Github className="w-4 h-4" />
@@ -223,7 +223,7 @@ export default function Projects() {
 
         {/* Featured projects */}
         {projects.filter((p) => p.featured).length > 0 && (
-          <div className="mb-12">
+          <div className="mb-12 space-y-5 sm:space-y-6">
             {projects
               .filter((p) => p.featured)
               .map((project) => (

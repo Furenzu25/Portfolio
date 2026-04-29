@@ -35,16 +35,16 @@ function SkillMarquee() {
   const doubledSkills = [...allSkillsFlat, ...allSkillsFlat];
 
   return (
-    <div className="relative overflow-hidden py-4 mb-16">
+    <div className="relative overflow-hidden py-3 sm:py-4 mb-10 sm:mb-16">
       {/* Gradient fades */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
+      <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 z-10 bg-gradient-to-r from-background to-transparent" />
+      <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 z-10 bg-gradient-to-l from-background to-transparent" />
 
       <div className="flex gap-4 marquee">
         {doubledSkills.map((skill, i) => (
           <span
             key={`${skill}-${i}`}
-            className="flex-shrink-0 px-4 py-2 rounded-xl glass text-sm font-medium text-foreground/70 whitespace-nowrap"
+            className="flex-shrink-0 px-3 sm:px-4 py-2 rounded-xl glass text-xs sm:text-sm font-medium text-foreground/70 whitespace-nowrap"
           >
             {skill}
           </span>
@@ -131,10 +131,10 @@ export default function Skills() {
           <span className="text-accent text-sm font-mono font-medium tracking-wider uppercase">
             // Skills
           </span>
-          <h2 className="text-4xl sm:text-5xl font-heading font-bold mt-3 mb-4">
+          <h2 className="text-3xl sm:text-5xl font-heading font-bold mt-3 mb-4">
             My Toolkit
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
             Built through academic training and hands-on project experience
           </p>
         </motion.div>

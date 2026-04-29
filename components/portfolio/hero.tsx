@@ -167,10 +167,10 @@ export default function Hero({ setActiveSection }: HeroProps) {
         }}
       />
 
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-32 sm:pb-20">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center">
           {/* Left: Text content */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -190,7 +190,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
                 Available for opportunities
               </motion.div>
 
-              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
+              <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -213,7 +213,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-lg text-muted-foreground max-w-lg leading-relaxed"
+                className="text-base sm:text-lg text-muted-foreground max-w-lg leading-relaxed"
               >
                 I build efficient, user-centered digital solutions — from full-stack web apps
                 to machine learning models. Detail-oriented and shipping-focused.
@@ -229,7 +229,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
             >
               <button
                 onClick={scrollToProjects}
-                className="group relative px-8 py-3.5 rounded-xl bg-accent text-accent-foreground font-semibold text-sm overflow-hidden cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="group relative px-8 py-3.5 min-h-11 rounded-xl bg-accent text-accent-foreground font-semibold text-sm overflow-hidden cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   View My Work
@@ -238,7 +238,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
               </button>
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="px-8 py-3.5 rounded-xl border border-border font-semibold text-sm hover:bg-white/5 transition-all duration-200 text-center cursor-pointer hover:border-accent/30"
+                className="px-8 py-3.5 min-h-11 rounded-xl border border-border font-semibold text-sm hover:bg-white/5 transition-all duration-200 text-center cursor-pointer hover:border-accent/30"
               >
                 Get In Touch
               </a>
@@ -249,7 +249,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.6 }}
-              className="flex gap-10 pt-6"
+              className="grid grid-cols-3 gap-4 sm:gap-10 pt-4 sm:pt-6"
             >
               {[
                 { value: heroStats.projectsCompleted, label: 'Projects' },
@@ -257,10 +257,10 @@ export default function Hero({ setActiveSection }: HeroProps) {
                 { value: heroStats.technologiesUsed, label: 'Technologies' },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="text-2xl font-heading font-bold text-foreground">
+                  <div className="text-xl sm:text-2xl font-heading font-bold text-foreground">
                     <AnimatedCounter target={stat.value} />
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
+                  <div className="text-[10px] sm:text-xs text-muted-foreground mt-1 uppercase tracking-wider">
                     {stat.label}
                   </div>
                 </div>
