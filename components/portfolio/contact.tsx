@@ -57,7 +57,15 @@ export default function Contact() {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
     );
-    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
+    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      personalInfo.email,
+    )}&su=${subject}&body=${body}`;
+
+    const gmailWindow = window.open(gmailComposeUrl, '_blank', 'noopener,noreferrer');
+    if (!gmailWindow) {
+      window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
+    }
+
     setSubmitted(true);
     setFormData({ name: '', email: '', message: '' });
     setTimeout(() => setSubmitted(false), 3000);
