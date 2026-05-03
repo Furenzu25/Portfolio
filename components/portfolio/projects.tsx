@@ -61,7 +61,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
                 <div className="absolute left-4 bottom-4 glass rounded-lg px-3 py-2">
-                  <p className="text-xs font-medium text-foreground/90">Live Dashboard</p>
+                  <p className="text-xs font-medium text-foreground/90">Interface preview</p>
                 </div>
               </>
             ) : (

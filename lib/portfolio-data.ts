@@ -194,8 +194,15 @@ export const projects: Project[] = [
     id: 3,
     title: 'COA Submission Hub',
     description:
-      'Submission hub for Ateneo de Davao with Google sign-in scoped to institutional accounts (@addu.edu.ph). Clean, centered auth UX with clear guidance for staff and students.',
-    tags: ['Google OAuth', 'TypeScript', 'Web App', 'ADDU'],
+      'End-to-end web platform for the Commission on Audit (COA) to run event planning and day-to-day operations: add and remove events, organize activities, and operate submission bins for Cuerta presentations and other deliverables. Google sign-in is limited to Ateneo de Davao accounts (@addu.edu.ph) so only authorized staff and students use the system.',
+    tags: [
+      'Full-Stack',
+      'Event Management',
+      'Submissions',
+      'Google OAuth',
+      'TypeScript',
+      'ADDU',
+    ],
     image: '/coa-submission-hub-login.png',
     featured: true,
   },
