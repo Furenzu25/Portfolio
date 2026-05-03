@@ -190,6 +190,15 @@ export const projects: Project[] = [
     live: 'https://www.roseltrading.trade',
     featured: true,
   },
+  {
+    id: 3,
+    title: 'COA Submission Hub',
+    description:
+      'Submission hub for Ateneo de Davao with Google sign-in scoped to institutional accounts (@addu.edu.ph). Clean, centered auth UX with clear guidance for staff and students.',
+    tags: ['Google OAuth', 'TypeScript', 'Web App', 'ADDU'],
+    image: '/coa-submission-hub-login.png',
+    featured: true,
+  },
 ];
 
 export const languages = ['English', 'Tagalog', 'Bisaya'];
