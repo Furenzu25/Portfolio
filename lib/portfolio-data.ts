@@ -14,7 +14,7 @@ export const personalInfo = {
 
 export const socialLinks = {
   github: 'https://github.com/Furenzu25',
-  linkedin: '#',
+  linkedin: 'https://www.linkedin.com/in/jan-florenz-tenebroso-366b37408',
   twitter: '#',
 };
 
