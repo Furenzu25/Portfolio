@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { GraduationCap, Award, Globe } from 'lucide-react';
 import { summary, education, languages } from '@/lib/portfolio-data';
@@ -54,23 +55,45 @@ export default function About() {
           </h2>
         </motion.div>
 
-        {/* Bio paragraphs with staggered reveal */}
-        <div className="space-y-6 mb-16">
-          {summary.paragraphs.map((paragraph, i) => (
-            <motion.p
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.6,
-                delay: 0.2 + i * 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="text-lg text-muted-foreground leading-relaxed max-w-3xl"
-            >
-              {paragraph}
-            </motion.p>
-          ))}
+        {/* Photo + Bio */}
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 md:gap-14 mb-16 items-start">
+          {/* Profile photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto md:mx-0 flex-shrink-0"
+          >
+            <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden ring-2 ring-white/10 shadow-2xl shadow-black/40">
+              <Image
+                src="/profile.jpg"
+                alt="Jan Florenz R. Tenebroso"
+                fill
+                className="object-cover object-top"
+                priority
+              />
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
+            </div>
+          </motion.div>
+
+          {/* Bio paragraphs */}
+          <div className="space-y-6">
+            {summary.paragraphs.map((paragraph, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.2 + i * 0.15,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="text-lg text-muted-foreground leading-relaxed"
+              >
+                {paragraph}
+              </motion.p>
+            ))}
+          </div>
         </div>
 
         {/* Cards grid */}
