@@ -30,10 +30,21 @@ Collaborative contributor in web development projects and team settings, with a 
   ],
 };
 
-export const education = {
+export type Education = {
+  degree: string;
+  school: string;
+  period: string;
+  /** Shown on About; omit or clear after degree is conferred */
+  status?: string;
+  highlights: string[];
+  honors: string[];
+};
+
+export const education: Education = {
   degree: 'Bachelor of Science in Computer Science',
   school: 'Ateneo de Davao University',
   period: '2022 - 2026',
+  status: 'Graduating — Class of 2026',
   highlights: [
     'Software Engineering',
     'Machine Learning',

@@ -110,6 +110,9 @@ export default function About() {
               <div className="space-y-2">
                 <p className="font-semibold text-foreground text-sm">{education.degree}</p>
                 <p className="text-muted-foreground text-sm">{education.school}</p>
+                {education.status ? (
+                  <p className="text-xs font-medium text-accent">{education.status}</p>
+                ) : null}
                 <p className="text-xs text-muted-foreground font-mono">{education.period}</p>
               </div>
               <div className="mt-5 pt-4 border-t border-white/5">
