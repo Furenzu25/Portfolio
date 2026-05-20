@@ -9,7 +9,6 @@ export const personalInfo = {
   title: 'Software Engineer',
   location: 'Las Arenas, Mandug, Davao City, Davao del Sur',
   email: 'janflorenztenebroso311@gmail.com',
-  phone: '+63967 290 6859',
 };
 
 export const socialLinks = {

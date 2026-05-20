@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, ArrowUpRight } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Send, ArrowUpRight } from 'lucide-react';
 import { personalInfo, socialLinks } from '@/lib/portfolio-data';
 
 function MagneticButton({
@@ -73,7 +73,6 @@ export default function Contact() {
 
   const contactMethods = [
     { icon: Mail, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-    { icon: Phone, label: 'Phone', value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s/g, '')}` },
     { icon: MapPin, label: 'Location', value: 'Davao City, Philippines', href: null },
   ];
 
