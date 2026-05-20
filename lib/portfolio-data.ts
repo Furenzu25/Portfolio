@@ -13,7 +13,7 @@ export const personalInfo = {
 
 export const socialLinks = {
   github: 'https://github.com/Furenzu25',
-  linkedin: '#',
+  linkedin: 'https://www.linkedin.com/in/jan-florenz-tenebroso-366b37408',
   twitter: '#',
 };
 
@@ -29,10 +29,21 @@ Collaborative contributor in web development projects and team settings, with a 
   ],
 };
 
-export const education = {
+export type Education = {
+  degree: string;
+  school: string;
+  period: string;
+  /** Shown on About; omit or clear after degree is conferred */
+  status?: string;
+  highlights: string[];
+  honors: string[];
+};
+
+export const education: Education = {
   degree: 'Bachelor of Science in Computer Science',
   school: 'Ateneo de Davao University',
   period: '2022 - 2026',
+  status: 'Graduating — Class of 2026',
   highlights: [
     'Software Engineering',
     'Machine Learning',
@@ -85,6 +96,16 @@ export const heroStats = {
 };
 
 export const projectExperience = [
+  {
+    title: 'Rosel Trading Website',
+    tech: 'ReactJS, NestJS, TypeScript, Production Deployment',
+    period: '2025 - Present',
+    highlights: [
+      'Built and deployed roseltrading.trade as a full-stack business website for a family-owned company',
+      'Implemented the frontend with ReactJS and the backend APIs with NestJS',
+      'Delivered a production-ready deployment with stable hosting and live domain access',
+    ],
+  },
   {
     title: 'Web Application Development',
     tech: 'PHP, Laravel, MaryUI, MySQL',
@@ -177,6 +198,22 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Supabase', 'Loan Workflow', 'UX', 'Tailwind CSS'],
     image: '/opera_SNCY8UBMa2.png',
     live: 'https://www.roseltrading.trade',
+    featured: true,
+  },
+  {
+    id: 3,
+    title: 'COA Submission Hub',
+    description:
+      'End-to-end web platform for the Commission on Audit (COA) to run event planning and day-to-day operations: add and remove events, organize activities, and operate submission bins for Cuerta presentations and other deliverables. Google sign-in is limited to Ateneo de Davao accounts (@addu.edu.ph) so only authorized staff and students use the system.',
+    tags: [
+      'Full-Stack',
+      'Event Management',
+      'Submissions',
+      'Google OAuth',
+      'TypeScript',
+      'ADDU',
+    ],
+    image: '/coa-submission-hub-login.png',
     featured: true,
   },
 ];
