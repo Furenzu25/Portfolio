@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useEffect, useState, useRef } from 'react';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
-import { ArrowDown, Terminal } from 'lucide-react';
-import { personalInfo, heroStats } from '@/lib/portfolio-data';
+import { useEffect, useState, useRef } from "react";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { ArrowDown, Terminal, Download } from "lucide-react";
+import { personalInfo, heroStats } from "@/lib/portfolio-data";
 
 interface HeroProps {
   setActiveSection: (section: string) => void;
 }
 
 const codeLines = [
-  { prefix: 'const', keyword: 'developer', value: `"${personalInfo.shortName}"` },
-  { prefix: 'const', keyword: 'role', value: `"Full Stack Engineer"` },
-  { prefix: 'const', keyword: 'focus', value: `["Web Dev", "Automation", "ML"]` },
-  { prefix: 'const', keyword: 'status', value: `"Building cool things"` },
+  { prefix: "const", keyword: "developer", value: `"${personalInfo.shortName}"` },
+  { prefix: "const", keyword: "role", value: `"Full Stack Engineer"` },
+  { prefix: "const", keyword: "focus", value: `["Web Dev", "Automation", "ML"]` },
+  { prefix: "const", keyword: "status", value: `"Building cool things"` },
 ];
 
 function TypewriterCode() {
@@ -55,23 +55,24 @@ function TypewriterCode() {
               {i + 1}
             </span>
             <span>
-              <span className="text-purple-400">{displayText.split(' ')[0]} </span>
+              <span className="text-purple-400">{displayText.split(" ")[0]} </span>
               <span className="text-blue-400">
-                {displayText.split(' ').slice(1, displayText.indexOf('=') > -1 ? displayText.split(' ').indexOf('=') : 2).join(' ')}
+                {displayText
+                  .split(" ")
+                  .slice(1, displayText.indexOf("=") > -1 ? displayText.split(" ").indexOf("=") : 2)
+                  .join(" ")}
               </span>
-              {displayText.includes('=') && (
+              {displayText.includes("=") && (
                 <>
                   <span className="text-muted-foreground"> = </span>
-                  <span className="text-emerald-400">
-                    {displayText.split('= ')[1]}
-                  </span>
+                  <span className="text-emerald-400">{displayText.split("= ")[1]}</span>
                 </>
               )}
             </span>
             {showCursor && (
               <motion.span
                 animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.6, repeat: Infinity, repeatType: 'reverse' }}
+                transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
                 className="inline-block w-2 h-5 bg-accent ml-0.5"
               />
             )}
@@ -82,23 +83,24 @@ function TypewriterCode() {
   );
 }
 
-function AnimatedCounter({ target, suffix = '' }: { target: string; suffix?: string }) {
-  const numericPart = parseInt(target.replace(/\D/g, ''));
-  const nonNumericSuffix = target.replace(/\d/g, '');
+function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: string }) {
+  const numericPart = parseInt(target.replace(/\D/g, ""));
+  const nonNumericSuffix = target.replace(/\d/g, "");
   const count = useMotionValue(0);
   const rounded = useTransform(count, (v) => Math.round(v));
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
+    if (!Number.isFinite(numericPart)) return;
     const controls = animate(count, numericPart, {
       duration: 2,
       ease: [0.22, 1, 0.36, 1],
     });
-    return controls.stop;
+    return () => controls.stop();
   }, [count, numericPart]);
 
   useEffect(() => {
-    const unsubscribe = rounded.on('change', (v) => setDisplay(v));
+    const unsubscribe = rounded.on("change", (v) => setDisplay(v));
     return unsubscribe;
   }, [rounded]);
 
@@ -127,8 +129,8 @@ export default function Hero({ setActiveSection }: HeroProps) {
   };
 
   const scrollToProjects = () => {
-    setActiveSection('projects');
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    setActiveSection("projects");
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -138,34 +140,26 @@ export default function Hero({ setActiveSection }: HeroProps) {
       onMouseMove={handleMouseMove}
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Gradient mesh background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-accent/8 blur-[120px]" />
-        <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-purple-500/6 blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-500/4 blur-[150px]" />
+      {/* Section accent orbs (layered on page mesh) */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px]" />
+        <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-purple-500/8 blur-[100px] dark:bg-purple-500/6" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-500/6 blur-[150px] dark:bg-blue-500/4" />
       </div>
 
       {/* Spotlight cursor glow */}
       <motion.div
-        className="absolute -z-5 w-[500px] h-[500px] rounded-full pointer-events-none hidden md:block"
+        className="absolute -z-5 w-[500px] h-[500px] rounded-full pointer-events-none hidden md:block hero-spotlight"
         style={{
           left: spotlightX,
           top: spotlightY,
-          x: '-50%',
-          y: '-50%',
-          background: 'radial-gradient(circle, oklch(0.62 0.19 264 / 0.06) 0%, transparent 70%)',
+          x: "-50%",
+          y: "-50%",
         }}
       />
 
       {/* Grid pattern */}
-      <div
-        className="absolute inset-0 -z-10 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'linear-gradient(oklch(1 0 0 / 0.1) 1px, transparent 1px), linear-gradient(90deg, oklch(1 0 0 / 0.1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+      <div className="absolute inset-0 -z-10 opacity-60 hero-grid" />
 
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-32 sm:pb-20">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center">
@@ -215,8 +209,8 @@ export default function Hero({ setActiveSection }: HeroProps) {
                 transition={{ delay: 0.6, duration: 0.6 }}
                 className="text-base sm:text-lg text-muted-foreground max-w-lg leading-relaxed"
               >
-                I build efficient, user-centered digital solutions — from full-stack web apps
-                to machine learning models. Detail-oriented and shipping-focused.
+                I build efficient, user-centered digital solutions — from full-stack web apps to
+                machine learning models. Detail-oriented and shipping-focused.
               </motion.p>
             </motion.div>
 
@@ -238,10 +232,21 @@ export default function Hero({ setActiveSection }: HeroProps) {
               </button>
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="px-8 py-3.5 min-h-11 rounded-xl border border-border font-semibold text-sm hover:bg-white/5 transition-all duration-200 text-center cursor-pointer hover:border-accent/30"
+                className="px-8 py-3.5 min-h-11 rounded-xl border border-border font-semibold text-sm hover:bg-foreground/5 transition-all duration-200 text-center cursor-pointer hover:border-accent/30"
               >
                 Get In Touch
               </a>
+              {personalInfo.resumeUrl ? (
+                <a
+                  href={personalInfo.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3.5 min-h-11 rounded-xl border border-border font-semibold text-sm hover:bg-foreground/5 transition-all duration-200 text-center cursor-pointer hover:border-accent/30 flex items-center justify-center gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  Resume
+                </a>
+              ) : null}
             </motion.div>
 
             {/* Stats */}
@@ -252,9 +257,9 @@ export default function Hero({ setActiveSection }: HeroProps) {
               className="grid grid-cols-3 gap-4 sm:gap-10 pt-4 sm:pt-6"
             >
               {[
-                { value: heroStats.projectsCompleted, label: 'Projects' },
-                { value: heroStats.yearsExperience, label: 'Fresh Graduate' },
-                { value: heroStats.technologiesUsed, label: 'Technologies' },
+                { value: heroStats.projectsCompleted, label: "Projects" },
+                { value: heroStats.yearsExperience, label: "Years Learning" },
+                { value: heroStats.technologiesUsed, label: "Technologies" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <div className="text-xl sm:text-2xl font-heading font-bold text-foreground">
@@ -275,9 +280,9 @@ export default function Hero({ setActiveSection }: HeroProps) {
             transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="hidden lg:block relative"
           >
-            <div className="glass rounded-2xl overflow-hidden shadow-2xl shadow-black/30">
+            <div className="glass rounded-2xl overflow-hidden shadow-elevated-lg">
               {/* Terminal header */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5">
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-foreground/10">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-red-500/60" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
@@ -297,7 +302,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
             {/* Floating accent cards */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="glass rounded-xl px-4 py-3 absolute -bottom-4 -left-4 hidden xl:flex items-center gap-3"
             >
               <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">

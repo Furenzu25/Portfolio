@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Send, ArrowUpRight } from 'lucide-react';
-import { personalInfo, socialLinks } from '@/lib/portfolio-data';
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Mail, MapPin, Github, Linkedin, Send, ArrowUpRight } from "lucide-react";
+import { personalInfo, socialLinks } from "@/lib/portfolio-data";
 
 function MagneticButton({
   children,
-  className = '',
+  className = "",
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & { children: React.ReactNode }) {
   const ref = useRef<HTMLButtonElement>(null);
@@ -22,7 +22,7 @@ function MagneticButton({
 
   const handleMouseLeave = () => {
     if (ref.current) {
-      ref.current.style.transform = 'translate(0, 0)';
+      ref.current.style.transform = "translate(0, 0)";
     }
   };
 
@@ -41,45 +41,56 @@ function MagneticButton({
 
 export default function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const validate = () => {
+    const newErrors: typeof errors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email";
+    }
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (errors[e.target.name as keyof typeof errors]) {
+      setErrors((prev) => ({ ...prev, [e.target.name]: undefined }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
+
     const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
     );
-    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-      personalInfo.email,
-    )}&su=${subject}&body=${body}`;
-
-    const gmailWindow = window.open(gmailComposeUrl, '_blank', 'noopener,noreferrer');
-    if (!gmailWindow) {
-      window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
-    }
+    const mailtoUrl = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
+    window.open(mailtoUrl, "_blank", "noopener,noreferrer");
 
     setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: "", email: "", message: "" });
     setTimeout(() => setSubmitted(false), 3000);
   };
 
   const contactMethods = [
-    { icon: Mail, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-    { icon: MapPin, label: 'Location', value: 'Davao City, Philippines', href: null },
+    { icon: Mail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}` },
+    { icon: MapPin, label: "Location", value: "Davao City, Philippines", href: null },
   ];
 
   const socials = [
-    { icon: Github, label: 'GitHub', href: socialLinks.github },
-    { icon: Linkedin, label: 'LinkedIn', href: socialLinks.linkedin },
-  ];
+    { icon: Github, label: "GitHub", href: socialLinks.github, rel: "noopener noreferrer" },
+    { icon: Linkedin, label: "LinkedIn", href: socialLinks.linkedin, rel: "noopener noreferrer" },
+  ].filter((s) => s.href && s.href !== "#");
 
   return (
     <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative">
@@ -118,7 +129,10 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">
+                  <label
+                    htmlFor="name"
+                    className="block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider"
+                  >
                     Name
                   </label>
                   <input
@@ -128,12 +142,24 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 min-h-11 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-shadow text-sm"
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    className={`w-full px-4 py-3 min-h-11 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 transition-shadow text-sm ${
+                      errors.name ? "focus:ring-red-500/30" : "focus:ring-accent/30"
+                    }`}
                     placeholder="Your name"
                   />
+                  {errors.name && (
+                    <p id="name-error" className="text-xs text-red-400 mt-1" role="alert">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">
+                  <label
+                    htmlFor="email"
+                    className="block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider"
+                  >
                     Email
                   </label>
                   <input
@@ -143,13 +169,25 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 min-h-11 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-shadow text-sm"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    className={`w-full px-4 py-3 min-h-11 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 transition-shadow text-sm ${
+                      errors.email ? "focus:ring-red-500/30" : "focus:ring-accent/30"
+                    }`}
                     placeholder="your@email.com"
                   />
+                  {errors.email && (
+                    <p id="email-error" className="text-xs text-red-400 mt-1" role="alert">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
               </div>
               <div>
-                <label htmlFor="message" className="block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider"
+                >
                   Message
                 </label>
                 <textarea
@@ -159,20 +197,25 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent/30 transition-shadow text-sm resize-none"
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "message-error" : undefined}
+                  className={`w-full px-4 py-3 rounded-xl glass border-0 text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 transition-shadow text-sm resize-none ${
+                    errors.message ? "focus:ring-red-500/30" : "focus:ring-accent/30"
+                  }`}
                   placeholder="Tell me about your project..."
                 />
+                {errors.message && (
+                  <p id="message-error" className="text-xs text-red-400 mt-1" role="alert">
+                    {errors.message}
+                  </p>
+                )}
               </div>
 
               <MagneticButton
                 type="submit"
                 className="w-full px-6 py-3.5 min-h-11 rounded-xl bg-accent text-white font-semibold text-sm flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.98] cursor-pointer"
               >
-                {submitted ? (
-                  'Opening Email Client...'
-                ) : (
-                  'Send Message'
-                )}
+                {submitted ? "Opening Email Client..." : "Send Message"}
               </MagneticButton>
             </form>
           </motion.div>
@@ -197,9 +240,7 @@ export default function Contact() {
                       <p className="text-[11px] text-muted-foreground uppercase tracking-wider">
                         {method.label}
                       </p>
-                      <p className="text-sm font-medium text-foreground truncate">
-                        {method.value}
-                      </p>
+                      <p className="text-sm font-medium text-foreground truncate">{method.value}</p>
                     </div>
                   </div>
                 );

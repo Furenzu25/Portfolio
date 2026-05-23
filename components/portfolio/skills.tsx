@@ -40,11 +40,11 @@ function SkillMarquee() {
       <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 z-10 bg-gradient-to-r from-background to-transparent" />
       <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 z-10 bg-gradient-to-l from-background to-transparent" />
 
-      <div className="flex gap-4 marquee">
+      <div className="marquee-track marquee">
         {doubledSkills.map((skill, i) => (
           <span
             key={`${skill}-${i}`}
-            className="flex-shrink-0 px-3 sm:px-4 py-2 rounded-xl glass text-xs sm:text-sm font-medium text-foreground/70 whitespace-nowrap"
+            className="shrink-0 px-3 sm:px-4 py-2 rounded-xl glass text-xs sm:text-sm font-medium text-foreground/70 whitespace-nowrap"
           >
             {skill}
           </span>
@@ -79,7 +79,7 @@ function SkillCard({
       }}
       className="group"
     >
-      <div className="glass rounded-2xl p-6 h-full hover:border-white/10 transition-all duration-300 cursor-pointer">
+      <div className="glass rounded-2xl p-6 h-full hover:border-foreground/15 transition-all duration-300 cursor-pointer">
         {/* Header */}
         <div className="flex items-center gap-3 mb-5">
           <div className={`w-10 h-10 rounded-xl ${bgColor} flex items-center justify-center`}>
@@ -102,8 +102,8 @@ function SkillCard({
                 delay: index * 0.08 + i * 0.04,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="px-3 py-1.5 rounded-lg bg-white/5 text-sm font-medium text-foreground/70 
-                         group-hover:bg-white/8 transition-colors duration-200"
+              className="px-3 py-1.5 rounded-lg bg-foreground/5 text-sm font-medium text-foreground/70 
+                         group-hover:bg-foreground/8 transition-colors duration-200"
             >
               {skill}
             </motion.span>

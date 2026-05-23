@@ -1,10 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { GraduationCap, Award, Globe } from 'lucide-react';
 import { summary, education, languages } from '@/lib/portfolio-data';
+import ProfileImage from '@/components/portfolio/profile-image';
 
 function TimelineItem({
   children,
@@ -64,16 +64,7 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto md:mx-0 flex-shrink-0"
           >
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden ring-2 ring-white/10 shadow-2xl shadow-black/40">
-              <Image
-                src="/profile.jpg"
-                alt="Jan Florenz R. Tenebroso"
-                fill
-                className="object-cover object-top"
-                priority
-              />
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
-            </div>
+            <ProfileImage />
           </motion.div>
 
           {/* Bio paragraphs */}
@@ -115,7 +106,7 @@ export default function About() {
                 ) : null}
                 <p className="text-xs text-muted-foreground font-mono">{education.period}</p>
               </div>
-              <div className="mt-5 pt-4 border-t border-white/5">
+              <div className="mt-5 pt-4 border-t border-foreground/10">
                 <p className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">
                   Coursework
                 </p>
@@ -123,7 +114,7 @@ export default function About() {
                   {education.highlights.map((h) => (
                     <span
                       key={h}
-                      className="px-2 py-1 text-[11px] rounded-md bg-white/5 text-foreground/70"
+                      className="px-2 py-1 text-[11px] rounded-md bg-foreground/5 text-foreground/70"
                     >
                       {h}
                     </span>
@@ -168,7 +159,7 @@ export default function About() {
                     <div className="flex-1">
                       <p className="text-sm font-medium text-foreground">{lang}</p>
                     </div>
-                    <div className="h-1.5 w-24 rounded-full bg-white/5 overflow-hidden">
+                    <div className="h-1.5 w-24 rounded-full bg-foreground/5 overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={isInView ? { width: '100%' } : {}}

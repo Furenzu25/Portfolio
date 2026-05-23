@@ -34,7 +34,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background text-foreground grain overflow-x-hidden">
+    <main className="min-h-screen page-mesh text-foreground grain overflow-x-hidden">
       <Header activeSection={activeSection} setActiveSection={setActiveSection} />
       <Hero setActiveSection={setActiveSection} />
       <Projects />

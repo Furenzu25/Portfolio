@@ -1,9 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { projects, projectExperience, type Project } from '@/lib/portfolio-data';
+import { usePointerTilt } from '@/lib/use-pointer-tilt';
 
 function TiltCard({
   children,
@@ -12,30 +13,12 @@ function TiltCard({
   children: React.ReactNode;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const rotateX = useTransform(y, [-0.5, 0.5], [4, -4]);
-  const rotateY = useTransform(x, [-0.5, 0.5], [-4, 4]);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+  const { ref, rotateX, rotateY, pointerHandlers } = usePointerTilt();
 
   return (
     <motion.div
       ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      {...pointerHandlers}
       style={{ rotateX, rotateY, transformPerspective: 800 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className={className}
@@ -59,7 +42,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
                   alt={`${project.title} screenshot`}
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-foreground/10 to-transparent dark:from-black/35 dark:via-black/10" />
                 <div className="absolute left-4 bottom-4 glass rounded-lg px-3 py-2">
                   <p className="text-xs font-medium text-foreground/90">Interface preview</p>
                 </div>
@@ -103,7 +86,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-lg bg-white/5 border border-white/5 text-xs font-medium text-foreground/70"
+                  className="px-3 py-1 rounded-lg bg-foreground/5 border border-foreground/10 text-xs font-medium text-foreground/70"
                 >
                   {tag}
                 </span>
@@ -127,7 +110,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex justify-center items-center gap-2 px-5 py-3 min-h-11 rounded-xl border border-border text-sm font-semibold hover:bg-white/5 transition-colors cursor-pointer"
+                  className="inline-flex justify-center items-center gap-2 px-5 py-3 min-h-11 rounded-xl border border-border text-sm font-semibold hover:bg-foreground/5 transition-colors cursor-pointer"
                 >
                   Source
                   <Github className="w-4 h-4" />
@@ -171,7 +154,7 @@ function ExperienceCard({
               {exp.tech.split(', ').map((t) => (
                 <span
                   key={t}
-                  className="px-2 py-0.5 rounded-md bg-white/5 text-[11px] font-medium text-foreground/60"
+                  className="px-2 py-0.5 rounded-md bg-foreground/5 text-[11px] font-medium text-foreground/60"
                 >
                   {t}
                 </span>
