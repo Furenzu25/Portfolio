@@ -1,16 +1,21 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
-import { projects, projectExperience, type Project } from '@/lib/portfolio-data';
+import {
+  projects,
+  projectExperience,
+  type ExperienceEntry,
+  type Project,
+} from '@/lib/portfolio-data';
 import { usePointerTilt } from '@/lib/use-pointer-tilt';
 
 function TiltCard({
   children,
   className = '',
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }) {
   const { ref, rotateX, rotateY, pointerHandlers } = usePointerTilt();
@@ -128,7 +133,7 @@ function ExperienceCard({
   exp,
   index,
 }: {
-  exp: (typeof projectExperience)[0];
+  exp: ExperienceEntry;
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -144,10 +149,20 @@ function ExperienceCard({
       <TiltCard>
         <div className="group glass rounded-2xl p-6 h-full hover:border-accent/20 transition-colors duration-300 cursor-pointer">
           <div className="space-y-4">
-            <div className="flex items-start justify-between">
-              <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-accent transition-colors">
-                {exp.title}
-              </h3>
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-accent transition-colors">
+                  {exp.title}
+                </h3>
+                {exp.role ? (
+                  <p className="text-sm text-muted-foreground mt-0.5">{exp.role}</p>
+                ) : null}
+              </div>
+              {exp.kind === 'internship' ? (
+                <span className="px-2 py-0.5 rounded-md bg-accent/15 text-[10px] font-medium text-accent uppercase tracking-wide flex-shrink-0">
+                  Internship
+                </span>
+              ) : null}
             </div>
             <p className="text-xs text-muted-foreground font-mono">{exp.period}</p>
             <div className="flex flex-wrap gap-1.5">
@@ -223,11 +238,11 @@ export default function Projects() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="text-xl font-heading font-bold mb-6 text-foreground/80"
           >
-            Project Experience
+            Experience
           </motion.h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {projectExperience.map((exp, i) => (
-              <ExperienceCard key={exp.title} exp={exp} index={i} />
+              <ExperienceCard key={`${exp.title}-${exp.period}`} exp={exp} index={i} />
             ))}
           </div>
         </div>

@@ -27,7 +27,7 @@ export const summary = {
 Collaborative contributor in web development projects and team settings, with a focus on adopting modern technologies that improve efficiency and innovation. Balances technical execution with a strategic mindset to produce high-impact results.`,
   paragraphs: [
     "I'm a Full Stack Software Engineer with an emphasis on practical application and a detail-oriented approach. Familiar with software development and engineering processes, I specialize in creating efficient, user-centered solutions.",
-    "My experience spans web development using PHP Laravel with Filament, Java Spring Boot applications, modern frameworks like NestJS and Next.js, and machine learning with Python and TensorFlow. I focus on optimizing workflows, system automation, and delivering solutions that align with business goals.",
+    "I interned at O&B Software Labs (Orange & Bronze) as a Software Engineer from May to June, gaining hands-on experience in a professional engineering environment. My experience also spans PHP Laravel with Filament, Java Spring Boot, modern frameworks like NestJS and Next.js, and machine learning with Python and TensorFlow.",
     "As a collaborative contributor in web development projects and a strong team player, I embrace modern technologies that aid in efficiency and innovation. I balance technical execution with a strategic mindset to produce high-impact results.",
   ],
 };
@@ -118,7 +118,16 @@ export const heroStats = {
   technologiesUsed: "20+",
 };
 
-export const projectExperience = [
+export type ExperienceEntry = {
+  title: string;
+  role?: string;
+  tech: string;
+  period: string;
+  highlights: string[];
+  kind?: 'internship' | 'project';
+};
+
+export const projectExperience: ExperienceEntry[] = [
   {
     title: "Rosel Trading Website",
     tech: "ReactJS, NestJS, TypeScript, Production Deployment",
@@ -127,6 +136,19 @@ export const projectExperience = [
       "Built and deployed roseltrading.trade as a full-stack business website for a family-owned company",
       "Implemented the frontend with ReactJS and the backend APIs with NestJS",
       "Delivered a production-ready deployment with stable hosting and live domain access",
+    ],
+  },
+  {
+    title: "O&B Software Labs",
+    role: "Software Engineer",
+    kind: "internship",
+    tech: "PHP, Laravel, Filament, MaryUI, MySQL",
+    period: "May - Jun 2026",
+    highlights: [
+      "Summer internship at Orange & Bronze Software Labs in a Software Engineer capacity",
+      "Contributed to engineering deliverables alongside industry professionals",
+      "Applied full-stack practices with Laravel, Filament, and MySQL in a team setting",
+      "Built responsive UI with MaryUI, Tailwind CSS, and DaisyUI",
     ],
   },
   {
@@ -190,6 +212,8 @@ export const projectExperience = [
     ],
   },
 ];
+
+export const internships = projectExperience.filter((entry) => entry.kind === 'internship');
 
 export interface Project {
   id: number;

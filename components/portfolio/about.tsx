@@ -1,16 +1,16 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { GraduationCap, Award, Globe } from 'lucide-react';
-import { summary, education, languages } from '@/lib/portfolio-data';
+import { GraduationCap, Award, Globe, Briefcase } from 'lucide-react';
+import { summary, education, languages, internships } from '@/lib/portfolio-data';
 import ProfileImage from '@/components/portfolio/profile-image';
 
 function TimelineItem({
   children,
   index,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -88,7 +88,7 @@ export default function About() {
         </div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Education */}
           <TimelineItem index={0}>
             <div className="glass rounded-2xl p-6 h-full">
@@ -124,8 +124,44 @@ export default function About() {
             </div>
           </TimelineItem>
 
+          {/* Internship */}
+          {internships.map((internship, i) => (
+            <TimelineItem key={internship.title} index={1 + i}>
+              <div className="glass rounded-2xl p-6 h-full">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-xl bg-sky-500/15 flex items-center justify-center">
+                    <Briefcase className="w-5 h-5 text-sky-400" />
+                  </div>
+                  <h3 className="text-lg font-heading font-bold">Internship</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="font-semibold text-foreground text-sm">{internship.title}</p>
+                  {internship.role ? (
+                    <p className="text-muted-foreground text-sm">{internship.role}</p>
+                  ) : null}
+                  <p className="text-xs text-muted-foreground font-mono">{internship.period}</p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-foreground/10">
+                  <p className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">
+                    Focus
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {internship.tech.split(', ').map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-[11px] rounded-md bg-foreground/5 text-foreground/70"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </TimelineItem>
+          ))}
+
           {/* Honors */}
-          <TimelineItem index={1}>
+          <TimelineItem index={1 + internships.length}>
             <div className="glass rounded-2xl p-6 h-full">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 rounded-xl bg-yellow-500/15 flex items-center justify-center">
@@ -145,7 +181,7 @@ export default function About() {
           </TimelineItem>
 
           {/* Languages */}
-          <TimelineItem index={2}>
+          <TimelineItem index={2 + internships.length}>
             <div className="glass rounded-2xl p-6 h-full">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center">
