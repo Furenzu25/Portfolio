@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   description:
     "Full Stack Software Engineer specializing in web development, system automation, and user-centered solutions.",
   icons: {
-    icon: [{ url: "/furenxu.webp", type: "image/webp" }],
+    icon: [{ url: "/furenxu-icon.png", type: "image/png" }],
   },
   openGraph: {
     title: "Jan Florenz Tenebroso | Software Engineer",
